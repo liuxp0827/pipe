@@ -36,6 +36,12 @@ func showIndexAction(c *gin.Context) {
 	t.Execute(c.Writer, nil)
 }
 
+func turnToBlog(c *gin.Context) {
+	c.Redirect(http.StatusMovedPermanently, model.Conf.Server+util.PathBlogs+"/liuxp0827")
+	c.Abort()
+	return
+}
+
 func showChangelogsAction(c *gin.Context) {
 	data, err := ioutil.ReadFile("changelogs.md")
 	if nil != err {
